@@ -6,8 +6,7 @@ Le score du joueur est calculé selon le nombre de paires trouvées: le plateau 
 
 Lorsque deux cartes identiques sont retournées, elles sont retirées du plateau.
 
-## Relectures
+## Remarks
 
-- 30 mars 2015 :
-    - Veuillez corriger tous les TODO de votre projet.
-    - Nous devons impérativement discuter de votre modélisation des cartes à la prochaine séance…
+- 04/10/2015 :
+    - TODO Translate this file.
