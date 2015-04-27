@@ -1,45 +1,42 @@
 package fr.iutvalence.mounieju.memory.firststep;
 
-/* TODO Translate. */
-
 /**
- * Classe pour créer le plateau de jeu.
+ * Class to create the board of the game.
  *
  * @author liottara
  * @version TODO
  */
-public class Board {
-    /* TODO Translate. */
-    /** Constante: nombre total de lignes par défaut du plateau. */
-    /* TODO Translate. */
+
+public class Board 
+{
+    /** Constant: total number of rows by default on the board. */
     private static final int NB_TOT_ROW = 2;
-    /* TODO Translate. */
-    /** Constante: nombre total de colonnes par défaut du plateau. */
-    /* TODO Translate. */
+    /** Constant: total number of columns by default on the board. */
     private static final int NB_TOT_COL = 2;
-    /* TODO JAVADOC. */
+    /** Define a 2D board with cards.  */
     private final Card board[][];
 
-    /* TODO JAVADOC. */
-    public Board() {
+    /** Constructor for the board. */
+    public Board() 
+    {
         board = new Card[NB_TOT_COL][NB_TOT_ROW];
         /* TODO Initialize your board. */
     }
 
-    /* TODO Translate. */
 
     /**
-     * Methode pour savoir s'il y a une carte sur la case ou non.
-     *
-     * @return boolean
+     * Method to know if there's a card or not on the board.
+     * @param location of the card (x being the abscissa and y the ordinate)
+     * @return boolean (true meaning there is a card at the (x,y) location)
      */
-    /* TODO Find a better name. */
-    public boolean placedCard(int x, int y) {
+    public boolean existingCard(int x, int y) 
+    {
         return this.board[x][y] != null;
     }
 
     @Override
-    public String toString() {
+    public String toString() 
+    {
         /* TODO With StringBuilder. */
         String plateauAsciiArt = "";
         for (int numeroDeLigne = 0; numeroDeLigne < NB_TOT_ROW; numeroDeLigne++) {

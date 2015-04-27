@@ -1,43 +1,43 @@
 package fr.iutvalence.mounieju.memory.firststep;
 
 /* TODO Use Generics rather than attribute for the design. */
-/* TODO Translate. */
+
 /**
- * Classe pour creer une carte.
+ * Class to create a card.
  *
  * @author liottara
  * @version TODO
  */
-public class Card {
-    /* TODO Translate. */
-    /** Design de la carte sur le plateau. */
+
+public class Card 
+{
+    /** Card's design on the board. */
     private final CardDesign design;
 
-    /* TODO Translate. */
-
-    /**
-     * Construit une carte d'après les caractéristiques données.
-     *
-     * @param designCard apparence de la carte
+    /** Constructor for the card according to the settings given by the user.
+     * @param designCard the card's design.
      */
-    public Card(CardDesign designCard) {
+    public Card(CardDesign designCard) 
+    {
         this.design = designCard;
     }
 
-    /* TODO JAVADOC. */
-    public CardDesign getDesign() {
+    /** Get the private attribute of the card's design.
+     * @return design : the card's design.
+     */
+    public CardDesign getDesign() 
+    {
         return this.design;
     }
 
-    /* TODO Translate. */
     /* TODO Regarder l'interface Comparable mais n'est-ce pas au Design d'implémenter cela ? */
 
     /**
-     * Compare le design des deux cartes retournées.
-     *
-     * @return true: les cartes sont identiques, sinon false
+     * Compare the design of two selected cards.
+     * @return true: cards are identical, else false
      */
-    public boolean compareTo(Card other) {
+    public boolean compareTo(Card other) 
+    {
         return this.design == other.design;
     }
 }

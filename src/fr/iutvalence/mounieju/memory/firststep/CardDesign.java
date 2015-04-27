@@ -1,29 +1,34 @@
 package fr.iutvalence.mounieju.memory.firststep;
 
-/* TODO Translate. */
 /**
- * Enumération permettant d'attribuer un design à la carte.
+ * Enumeration of multiple designs a card can have.
  *
  * @author liottara
  * @version TODO
  */
-public enum CardDesign {
-    /* TODO Translate. */
-    /** Apparence sushi de la carte. */
+
+public enum CardDesign 
+{
+    /** Sushi card's design. */
     SUSHI(" S "),
-    /* TODO Translate. */
-    /** Apparence ramen de la carte. */
+    
+    /** Ramen card's design. */
     RAMEN(" R ");
-    /* TODO JAVADOC. */
+    
+    /** Constant linking a letter to a design for the display. */
     private final String display;
 
-    /* TODO JAVADOC. */
-    CardDesign(final String disp) {
+    /** Constructor for the card's design. 
+     * @param disp: display of the card's design.
+     */
+    CardDesign(final String disp) 
+    {
         display = disp;
     }
 
     @Override
-    public String toString() {
+    public String toString() 
+    {
         return display;
     }
 }
