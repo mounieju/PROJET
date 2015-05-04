@@ -40,4 +40,7 @@ public class Card
     {
         return this.design == other.design;
     }
+    
+    
+    
 }

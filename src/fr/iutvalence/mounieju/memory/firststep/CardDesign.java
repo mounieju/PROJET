@@ -29,6 +29,9 @@ public enum CardDesign
     @Override
     public String toString() 
     {
-        return display;
+    	String cardSeparator = "|";
+		String afterCard = this.display+cardSeparator;
+		if (this.display == null) return cardSeparator+"()"+afterCard;
+		return cardSeparator+afterCard+" ";
     }
 }

@@ -11,16 +11,24 @@ public class Board
 {
     /** Constant: total number of rows by default on the board. */
     private static final int NB_TOT_ROW = 2;
+    
     /** Constant: total number of columns by default on the board. */
     private static final int NB_TOT_COL = 2;
+    
     /** Define a 2D board with cards.  */
     private final Card board[][];
 
     /** Constructor for the board. */
     public Board() 
     {
-        board = new Card[NB_TOT_COL][NB_TOT_ROW];
-        /* TODO Initialize your board. */
+        this.board = new Card[NB_TOT_COL][NB_TOT_ROW];
+        
+        
+        /* TODO Initialize your board. */        
+        this.board[0][0] = new Card(CardDesign.RAMEN);
+        this.board[0][1] = new Card(CardDesign.SUSHI);
+        this.board[1][0] = new Card(CardDesign.SUSHI);
+        this.board[1][1] = new Card(CardDesign.RAMEN);
     }
 
 
@@ -33,18 +41,23 @@ public class Board
     {
         return this.board[x][y] != null;
     }
+    
+    
+    
+    
+    
 
     @Override
     public String toString() 
     {
         /* TODO With StringBuilder. */
-        String plateauAsciiArt = "";
-        for (int numeroDeLigne = 0; numeroDeLigne < NB_TOT_ROW; numeroDeLigne++) {
-            for (int numeroDeColonne = 0; numeroDeColonne < NB_TOT_COL; numeroDeColonne++) {
-                plateauAsciiArt += this.board[numeroDeLigne][numeroDeColonne];
+        String asciiArtBoard = " ---------\n";
+        for (int numberOfRows = 0; numberOfRows < NB_TOT_ROW; numberOfRows++) {
+            for (int numberOfColumns = 0; numberOfColumns < NB_TOT_COL; numberOfColumns++) {
+                asciiArtBoard += this.board[numberOfRows][numberOfColumns].getDesign();
             }
-            plateauAsciiArt += "\n";
+            asciiArtBoard += "\n ---------\n";
         }
-        return plateauAsciiArt;
+        return asciiArtBoard;
     }
 }
