@@ -6,22 +6,34 @@ package fr.iutvalence.mounieju.memory.firststep;
  * Class to create a card.
  *
  * @author liottara
- * @version TODO
+ * @version 1
  */
 
 public class Card 
 {
+	////////////////// Attributes //////////////////////////////////////////////////////
+	
     /** Card's design on the board. */
     private final CardDesign design;
-
-    /** Constructor for the card according to the settings given by the user.
+    /** Card's face position. */
+    private boolean hidden;
+    
+    
+    
+//////////////////// Constructor //////////////////////////////////////////////////////
+    
+	/** Constructor for the card according to the settings given by the user.
      * @param designCard the card's design.
      */
     public Card(CardDesign designCard) 
     {
         this.design = designCard;
+        hidden = true;
     }
 
+    
+ //////////////////// Methods ////////////////////////////////////////////////////////
+    
     /** Get the private attribute of the card's design.
      * @return design : the card's design.
      */
@@ -29,18 +41,73 @@ public class Card
     {
         return this.design;
     }
-
-    /* TODO Regarder l'interface Comparable mais n'est-ce pas au Design d'implémenter cela ? */
-
-    /**
-     * Compare the design of two selected cards.
-     * @return true: cards are identical, else false
+    
+    
+    
+    
+    /* TODO improve methods?*/
+      
+    /** 
+     * Get the private attribute of the card's view.
+     * @return boolean (true: card is hidden, false: card is revealed).
      */
-    public boolean compareTo(Card other) 
+    public boolean getView() 
     {
-        return this.design == other.design;
+        return this.hidden;
     }
     
     
+    /**
+	 * Method to reveal card.
+	 * @return hidden false.
+	 */
+	public boolean revealCard()
+	{
+		return this.hidden = false;
+	}
+	
+	
+	/**
+	 * Method to hide card.
+	 * @return hidden true.
+	 */
+	public boolean hideCard()
+	{
+		return this.hidden = true;
+	}
+       
+
+   /////////////////////////////////////////////////////////////////////////////////////////////////////////
+      
+       
+  
+    @Override
+	public int hashCode()
+	{
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((design == null) ? 0 : design.hashCode());
+		return result;
+	}
+
+
+	@Override
+	public boolean equals(Object obj)
+	{
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Card other = (Card) obj;
+		return (design == other.design);
+	}
+
+	
+	@Override
+    public String toString() {
+    	return String.format("| %s |", hidden ? "#" : design);
+    }
     
 }
