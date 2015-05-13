@@ -75,7 +75,10 @@ public class Card
 	{
 		return this.hidden = true;
 	}
-       
+      
+	public void flip() {
+		this.hidden = !this.hidden;
+	}
 
    /////////////////////////////////////////////////////////////////////////////////////////////////////////
       

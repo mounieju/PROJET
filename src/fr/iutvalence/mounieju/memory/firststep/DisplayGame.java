@@ -1,19 +1,19 @@
 package fr.iutvalence.mounieju.memory.firststep;
 
-/** Main of the game
+/** Main of the Memory
  * @author liottara
  *
  */
 
-public class DisplayBoard 
+public class DisplayGame 
 {
     /** Displays the game on the terminal.
      * @param args
      */
     public static void main(String[] args) 
     {
-        System.out.println(new Board());
+    	Game game = new Game();
+    	game.start();
     }
     
-   
 }

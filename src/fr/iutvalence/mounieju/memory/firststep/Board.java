@@ -37,12 +37,14 @@ public class Board
         this.board[1][0] = new Card(CardDesign.SUSHI);
         this.board[1][1] = new Card(CardDesign.RAMEN);
         
+        
+        
         /* test flipCard method */
-        flipCard(this.board[1][1]);
+       /* flipCard(this.board[1][1]);
         flipCard(this.board[1][0]);
-        flipCard(this.board[1][1]); /* try flipping it twice */
-        flipCard(this.board[0][1]);
-        flipCard(this.board[0][0]);
+        flipCard(this.board[1][1]);  try flipping it twice */
+       
+        
 
         
         /*test sameCard method */
@@ -54,6 +56,7 @@ public class Board
     
 //////////////////// Methods ////////////////////////////////////////////////////////
 
+    
 	/**
      * Method to know if one card is the same as another card.
      * @param Choose two cards you want to compare.
@@ -72,10 +75,22 @@ public class Board
      * Flips selected card.
      */
 
-    public void flipCard(Card card)
+    public Card flipCard(int i, int j)
     {
+    	this.board[i][j].flip();
+    	return this.board[i][j];
+    }
+    
+    
+    /** 
+     * Flips selected card.
+     */
+
+    public boolean cardsLeft()
+    {
+    	while (check)
     	if (card.getView() == true)
-    		card.revealCard();
+    		return true;
     		   		
     	else card.hideCard();
     }
