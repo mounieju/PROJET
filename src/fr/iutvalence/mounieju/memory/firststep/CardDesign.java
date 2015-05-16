@@ -9,6 +9,7 @@ package fr.iutvalence.mounieju.memory.firststep;
 
 public enum CardDesign 
 {
+	
 	////////////////// Attributes //////////////////////////////////////////////////////
 
     /** Sushi card's design. */

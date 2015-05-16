@@ -76,6 +76,7 @@ public class Card
 		return this.hidden = true;
 	}
       
+	//TODO javadoc
 	public void flip() {
 		this.hidden = !this.hidden;
 	}

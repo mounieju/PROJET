@@ -48,7 +48,7 @@ public class Board
 
         
         /*test sameCard method */
-        System.out.println(sameCard(this.board[1][1],this.board[1][0]));       
+//        System.out.println(sameCard(this.board[1][1],this.board[1][0]));       
 
     }
    
@@ -86,14 +86,14 @@ public class Board
      * Flips selected card.
      */
 
-    public boolean cardsLeft()
-    {
-    	while (check)
-    	if (card.getView() == true)
-    		return true;
-    		   		
-    	else card.hideCard();
-    }
+//    public boolean cardsLeft()
+//    {
+//    	while (check)
+//    	if (card.getView() == true)
+//    		return true;
+//    		   		
+//    	else card.hideCard();
+//    }
    
     /* TODO 
      * link sameCard & flipCard ?
