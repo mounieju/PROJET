@@ -19,6 +19,8 @@ public class Card
     private boolean hidden;
     
     
+    public boolean identical;
+    
     
 //////////////////// Constructor //////////////////////////////////////////////////////
     
@@ -79,6 +81,17 @@ public class Card
 	//TODO javadoc
 	public void flip() {
 		this.hidden = !this.hidden;
+	}
+	
+	
+	
+	/**
+	 * Method to say cards are identical
+	 * @return identical true
+	 */
+	public boolean identicalCard()
+	{
+		return this.identical = true;
 	}
 
    /////////////////////////////////////////////////////////////////////////////////////////////////////////

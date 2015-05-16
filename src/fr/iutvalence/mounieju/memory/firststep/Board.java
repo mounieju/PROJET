@@ -14,10 +14,10 @@ public class Board
 	////////////////// Attributes //////////////////////////////////////////////////////
 
     /** Constant: total number of rows by default on the board. */
-    private static final int NB_TOT_ROW = 2;
+    public static final int NB_TOT_ROW = 2;
     
     /** Constant: total number of columns by default on the board. */
-    private static final int NB_TOT_COL = 2;
+    public static final int NB_TOT_COL = 2;
     
     /** Define a 2D board with cards.  */
     private final Card board[][];
@@ -68,7 +68,6 @@ public class Board
     	return Objects.equals(first, second);
     } 
     
-    
    
         
     /** 
@@ -81,19 +80,7 @@ public class Board
     	return this.board[i][j];
     }
     
-    
-    /** 
-     * Flips selected card.
-     */
 
-//    public boolean cardsLeft()
-//    {
-//    	while (check)
-//    	if (card.getView() == true)
-//    		return true;
-//    		   		
-//    	else card.hideCard();
-//    }
    
     /* TODO 
      * link sameCard & flipCard ?
@@ -109,8 +96,10 @@ public class Board
     {
         /* TODO With StringBuilder. */
         String asciiArtBoard = " --------\n";
-        for (int numberOfRows = 0; numberOfRows < NB_TOT_ROW; numberOfRows++) {
-            for (int numberOfColumns = 0; numberOfColumns < NB_TOT_COL; numberOfColumns++) {
+        for (int numberOfRows = 0; numberOfRows < NB_TOT_ROW; numberOfRows++) 
+        {
+            for (int numberOfColumns = 0; numberOfColumns < NB_TOT_COL; numberOfColumns++) 
+            {
                 asciiArtBoard += this.board[numberOfRows][numberOfColumns];
             }
             asciiArtBoard += "\n --------\n";

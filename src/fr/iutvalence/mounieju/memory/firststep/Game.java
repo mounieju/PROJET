@@ -2,6 +2,7 @@ package fr.iutvalence.mounieju.memory.firststep;
 
 import java.util.Scanner;
 
+
 /** Build the game
  * 
  * @author liottara */
@@ -11,7 +12,12 @@ public class Game
 	private Board gameBoard;
 	private Scanner sc;
 	
+	private static final int MAX_PAIR = 2;
+	private int nb_pair;
+	
 
+
+	
 	
 	/**
 	 * Create the new board
@@ -33,6 +39,7 @@ public class Game
 		
 		//Display the board at the beginning
 		System.out.println(gameBoard);
+	
 		
 		while (!victory) 
 		{
@@ -51,29 +58,76 @@ public class Game
 		  	int secondCardYPosi = sc.nextInt();	    
 		  	Card card2 = gameBoard.flipCard(secondCardXPosi,secondCardYPosi);
 		  	
+		  	//If the card is already turned over
+			if (card1.identical)
+	  			gameBoard.flipCard(firstCardXPosi,firstCardYPosi);
+		  	if (card2.identical)
+		  		gameBoard.flipCard(secondCardXPosi,secondCardYPosi); 
+		  	
+		  	
 		  	
 		  	//Display the board after returning the cards
 		  	System.out.println(gameBoard);
-		  	
-		  	//Compare the two selected Cards
-		  	if (!gameBoard.sameCard(card1,card2) /*&& (card1 != this.card1OK) && (card2 != this.card2OK)*/)
-			{
-		  		gameBoard.flipCard(firstCardXPosi,firstCardYPosi);
-			  	gameBoard.flipCard(secondCardXPosi,secondCardYPosi);
 
+		  	//If cards are different
+		  	if (!(card1.identical) && !(card2.identical))
+		  	{
+		  		
+		  	
+			  	//Compare the two selected Cards
+			  	if (!gameBoard.sameCard(card1,card2))
+				{
+
+					gameBoard.flipCard(firstCardXPosi, firstCardYPosi);
+					gameBoard.flipCard(secondCardXPosi, secondCardYPosi);
+
+					// Display the after flip cards (if they are different)
+					System.out.println(gameBoard);
+				}
+		  		
+			  	else 
+			  	{
+			  		//Compare if coordinates of cards are identical
+			  		if ((firstCardXPosi == secondCardXPosi) && (firstCardYPosi == secondCardYPosi))
+				  		System.out.println("You can't flip 2 identical cards");
+			  		
+			  		//If this is not the case , that the cards are identical and increments the number of pair
+			  		else
+			  		{
+			  			card1.identicalCard();
+			  			card2.identicalCard();
+			  						  			
+			  			nb_pair++;			  		
+			  		}
+				 
+		  		
+			  	}
+		
+			}
+		  	
+		  	//If cards are identicals
+		  	else
+		  	{
+		  		if (card1.identical)
+		  			gameBoard.flipCard(secondCardXPosi,secondCardYPosi);
+			  	if (card2.identical)
+			  		gameBoard.flipCard(firstCardXPosi,firstCardYPosi); 
+			  	
 			  	//Display the after flip cards (if they are different)
 			  	System.out.println(gameBoard);
-			}
-
-		  	
-		  	/**
-			 * If the player can flip 2 identical cards
-			 */
-		  	if ((firstCardXPosi == secondCardXPosi) && (firstCardYPosi == secondCardYPosi))
-		  		System.out.println("You can't flip 2 identical cards");
-		 
+		  	}
 		  		
-		}
+
+		  	//If the number of pair is the maximum the game finish
+		  	if (nb_pair == MAX_PAIR)
+		  	{
+		  		victory = true;
+		  		System.out.println("Fin du jeu");
+		  	}
+		  		
+		}	
+		
 	}
+	
 }
 
