@@ -38,29 +38,36 @@ public class Board
         this.board[1][1] = new Card(CardDesign.RAMEN);
         
         
-        
         /* test flipCard method */
        /* flipCard(this.board[1][1]);
         flipCard(this.board[1][0]);
         flipCard(this.board[1][1]);  try flipping it twice */
        
-        
-
-        
+               
         /*test sameCard method */
 //        System.out.println(sameCard(this.board[1][1],this.board[1][0]));       
 
     }
-   
+ 
+//////////////////// Getter ////////////////////////////////////////////////////////
     
+	/** 
+	* Get the card on the board.
+	* @param x: abscissa ;  y: ordinate.
+	* @return card : the card's design.
+	*/
+	public Card getCard(int x, int y) 
+	{
+		return this.board[x][y];
+	}
+	    
     
 //////////////////// Methods ////////////////////////////////////////////////////////
-
     
 	/**
      * Method to know if one card is the same as another card.
      * @param Choose two cards you want to compare.
-     * @return boolean (true: they're the same, else not)
+     * @return boolean (true: they're the same, else not).
      */
 
     public boolean sameCard(Card first, Card second) 
@@ -68,25 +75,19 @@ public class Board
     	return Objects.equals(first, second);
     } 
     
-   
-        
+           
     /** 
-     * Flips selected card.
+     * Method to flip selected card.
+     * @param x:abscissa   ;   y: ordinate.
+     * @return flipped Card (with face view changed).
      */
 
-    public Card flipCard(int i, int j)
+    public Card flipCard(int x, int y)
     {
-    	this.board[i][j].flip();
-    	return this.board[i][j];
+    	this.board[x][y].flip();
+    	return this.board[x][y];
     }
     
-
-   
-    /* TODO 
-     * link sameCard & flipCard ?
-     * flipCard : limit to two cards turned ?
-     * create Player and set all methods for him to insert commands
-     */
     
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////      
    

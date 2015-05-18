@@ -15,42 +15,38 @@ public class Card
 	
     /** Card's design on the board. */
     private final CardDesign design;
-    /** Card's face position. */
+    
+    /** Card's face view. */
     private boolean hidden;
-    
-    
-    public boolean identical;
-    
+         
     
 //////////////////// Constructor //////////////////////////////////////////////////////
     
-	/** Constructor for the card according to the settings given by the user.
+	/** 
+	 * Constructor for the card according to the settings given by the user.
      * @param designCard the card's design.
      */
     public Card(CardDesign designCard) 
     {
         this.design = designCard;
-        hidden = true;
+        this.hidden = true;
     }
 
     
- //////////////////// Methods ////////////////////////////////////////////////////////
+ //////////////////// Getters ////////////////////////////////////////////////////////
     
-    /** Get the private attribute of the card's design.
+    /** 
+     * Get the private attribute of the card's design.
      * @return design : the card's design.
      */
     public CardDesign getDesign() 
     {
         return this.design;
     }
+       
     
-    
-    
-    
-    /* TODO improve methods?*/
-      
     /** 
-     * Get the private attribute of the card's view.
+     * Get the private attribute of the card's face view.
      * @return boolean (true: card is hidden, false: card is revealed).
      */
     public boolean getView() 
@@ -59,44 +55,18 @@ public class Card
     }
     
     
-    /**
-	 * Method to reveal card.
-	 * @return hidden false.
-	 */
-	public boolean revealCard()
-	{
-		return this.hidden = false;
-	}
-	
-	
+    //////////////////// Methods ////////////////////////////////////////////////////////
+        
 	/**
-	 * Method to hide card.
-	 * @return hidden true.
+	 * Method when flipping card, changes its view (hidden or revealed).
 	 */
-	public boolean hideCard()
-	{
-		return this.hidden = true;
-	}
-      
-	//TODO javadoc
 	public void flip() {
 		this.hidden = !this.hidden;
 	}
 	
 	
-	
-	/**
-	 * Method to say cards are identical
-	 * @return identical true
-	 */
-	public boolean identicalCard()
-	{
-		return this.identical = true;
-	}
-
    /////////////////////////////////////////////////////////////////////////////////////////////////////////
-      
-       
+           
   
     @Override
 	public int hashCode()

@@ -9,26 +9,35 @@ import java.util.Scanner;
 
 public class Game
 {
+	////////////////// Attributes //////////////////////////////////////////////////////
+
+    /** Constant: total number of pairs by default in the game. */
+	private static final int MAX_PAIR = 2;
+	
+	/** Constant string to have a line separator. */
+	private static final String lineBreak = System.getProperty("line.separator");
+	
+    /** Define a game with board and scanner. */
 	private Board gameBoard;
 	private Scanner sc;
 	
-	private static final int MAX_PAIR = 2;
+    /** Variable having the player's score.  */
 	private int nb_pair;
 	
-
-
 	
+    ////////////////////Constructor //////////////////////////////////////////////////////	
 	
 	/**
-	 * Create the new board
+	 * Create the new game
 	 */
 	public Game()
 	{
 		sc = new Scanner(System.in);
 		this.gameBoard = new Board();
 	}
+	
 
-
+    //////////////////// Methods ////////////////////////////////////////////////////////
 	
 	/**
 	 * Method to start the game
@@ -44,85 +53,89 @@ public class Game
 		while (!victory) 
 		{
 		  	
-			//Flip first Card
-			System.out.println("Card 1 : Input card's x position");
+			//Choose first Card
+			
+			System.out.println(lineBreak+"Card 1 : Input card's x position");
 		    int firstCardXPosi = sc.nextInt();
-			System.out.println("Card 1 : Input card's y position");
+			System.out.println(lineBreak+"Card 1 : Input card's y position");
 		    int firstCardYPosi = sc.nextInt();	    
-		    Card card1 = gameBoard.flipCard(firstCardXPosi,firstCardYPosi);
+		    Card card1 = gameBoard.getCard(firstCardXPosi, firstCardYPosi);
 		    
-		    //Flip second Card
-		  	System.out.println("Card 2 : Input card's x position");
-		  	int secondCardXPosi = sc.nextInt();
-		  	System.out.println("Card 2 : Input card's y position");
-		  	int secondCardYPosi = sc.nextInt();	    
-		  	Card card2 = gameBoard.flipCard(secondCardXPosi,secondCardYPosi);
-		  	
-		  	//If the card is already turned over
-			if (card1.identical)
-	  			gameBoard.flipCard(firstCardXPosi,firstCardYPosi);
-		  	if (card2.identical)
-		  		gameBoard.flipCard(secondCardXPosi,secondCardYPosi); 
-		  	
-		  	
-		  	
-		  	//Display the board after returning the cards
-		  	System.out.println(gameBoard);
-
-		  	//If cards are different
-		  	if (!(card1.identical) && !(card2.identical))
-		  	{
-		  		
-		  	
-			  	//Compare the two selected Cards
-			  	if (!gameBoard.sameCard(card1,card2))
-				{
-
-					gameBoard.flipCard(firstCardXPosi, firstCardYPosi);
-					gameBoard.flipCard(secondCardXPosi, secondCardYPosi);
-
-					// Display the after flip cards (if they are different)
-					System.out.println(gameBoard);
-				}
-		  		
-			  	else 
-			  	{
-			  		//Compare if coordinates of cards are identical
-			  		if ((firstCardXPosi == secondCardXPosi) && (firstCardYPosi == secondCardYPosi))
-				  		System.out.println("You can't flip 2 identical cards");
-			  		
-			  		//If this is not the case , that the cards are identical and increments the number of pair
-			  		else
-			  		{
-			  			card1.identicalCard();
-			  			card2.identicalCard();
-			  						  			
-			  			nb_pair++;			  		
-			  		}
-				 
-		  		
-			  	}
-		
-			}
-		  	
-		  	//If cards are identicals
-		  	else
-		  	{
-		  		if (card1.identical)
-		  			gameBoard.flipCard(secondCardXPosi,secondCardYPosi);
-			  	if (card2.identical)
-			  		gameBoard.flipCard(firstCardXPosi,firstCardYPosi); 
+		    
+		    //If card 1 already revealed
+		    if (!card1.getView())
+		    	System.out.println(lineBreak+"Card 1 already found, choose another one");
+		   
+		    
+		    //Else flip card
+		    else
+		    {
+		    	System.out.println(lineBreak+"OK");
+		    	gameBoard.flipCard(firstCardXPosi,firstCardYPosi);
+		    	
+		    //Choose second Card
+		    	
+		    	System.out.println(lineBreak+"Card 2 : Input card's x position");
+			  	int secondCardXPosi = sc.nextInt();
+			  	System.out.println(lineBreak+"Card 2 : Input card's y position");
+			  	int secondCardYPosi = sc.nextInt();	    
+			  	Card card2 =  gameBoard.getCard(secondCardXPosi,secondCardYPosi);
 			  	
-			  	//Display the after flip cards (if they are different)
-			  	System.out.println(gameBoard);
-		  	}
-		  		
+			  	
+			  	//If card 2 same as card 1, returns over the first card
+			  	if ((firstCardXPosi == secondCardXPosi) && (firstCardYPosi == secondCardYPosi))
+			  	{
+			  		System.out.println(lineBreak+"You can't choose the same card twice");
+			  		gameBoard.flipCard(firstCardXPosi,firstCardYPosi);
+			  	}
+			  	
+			    //If card 2 already revealed, returns over the first card
+			  	else if (!card2.getView())
+			  	{
+			  		System.out.println(lineBreak+"Card 2 already found, restart choosing your cards");
+			  		gameBoard.flipCard(firstCardXPosi,firstCardYPosi);
+			  	}
+			  	
+			  	//Else flip card
+			  	else
+			  	{
+			  		System.out.println(lineBreak+"OK");
+			  		gameBoard.flipCard(secondCardXPosi,secondCardYPosi);
+			  		
+			  	//If cards are still hidden, comparison of the two selected cards
+			  		
+			  		//If different, flip them back
+				  	if (!gameBoard.sameCard(card1,card2))
+					{
+						gameBoard.flipCard(firstCardXPosi, firstCardYPosi);
+						gameBoard.flipCard(secondCardXPosi, secondCardYPosi);
+						System.out.println(lineBreak+"Cards not matching, try again!");
 
-		  	//If the number of pair is the maximum the game finish
+						// Display the board after the comparison
+						System.out.println(gameBoard);
+					}
+			  		
+				  //If cards are identical, reveal cards & increments the number of pairs
+				  	else 
+				  	{			
+				  			nb_pair++;
+				  			System.out.println(lineBreak+"Pair found, good job!");
+				  			
+				  		// Display the board after the comparison
+							System.out.println(gameBoard);
+				  	}
+					 
+			  		
+				  }
+			
+				}
+	
+
+		  	//If all pairs found, end of game
 		  	if (nb_pair == MAX_PAIR)
 		  	{
 		  		victory = true;
-		  		System.out.println("Fin du jeu");
+		  		System.out.println(lineBreak+"Game Over, You won");
 		  	}
 		  		
 		}	
