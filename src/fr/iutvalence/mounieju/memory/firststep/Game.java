@@ -59,6 +59,7 @@ public class Game
 		    int firstCardXPosi = sc.nextInt();
 			System.out.println(lineBreak+"Card 1 : Input card's y position");
 		    int firstCardYPosi = sc.nextInt();	    
+		    
 		    Card card1 = gameBoard.getCard(firstCardXPosi, firstCardYPosi);
 		    
 		    
@@ -101,6 +102,7 @@ public class Game
 			  	{
 			  		System.out.println(lineBreak+"OK");
 			  		gameBoard.flipCard(secondCardXPosi,secondCardYPosi);
+			  		System.out.println(gameBoard);
 			  		
 			  	//If cards are still hidden, comparison of the two selected cards
 			  		
