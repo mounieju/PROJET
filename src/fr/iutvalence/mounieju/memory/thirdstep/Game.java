@@ -31,7 +31,7 @@ public class Game
 		int difficulty;
 		
 		sc = new Scanner(System.in);
-		System.out.println("Choice a level");
+		System.out.println("Choose a level: 1 for 'Easy', 2 for 'Hard");
 		difficulty = sc.nextInt();
 		
 		if (difficulty == 1)
@@ -101,6 +101,8 @@ public class Game
 
 			System.out.printf("%nOK%n%n");
 			gameBoard.flip(firstCardXPosi, firstCardYPosi);
+			System.out.println(gameBoard);
+			
 
 			// Choose second Card
 

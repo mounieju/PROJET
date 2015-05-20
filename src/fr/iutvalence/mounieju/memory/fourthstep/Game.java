@@ -29,8 +29,14 @@ public class Game
 		int difficulty;
 		
 		sc = new Scanner(System.in);
-		System.out.println("Choose a level: 1 for 'Easy', 2 for 'Hard'");
+		System.out.println("Choose a level: 1 for 'Easy', 2 for 'Hard' ");
 		difficulty = sc.nextInt();
+		while (difficulty != 1 && difficulty !=2)
+		{
+			System.err.printf("Level not exists%n");
+			System.out.printf("Choose a level: 1 for 'Easy', 2 for 'Hard'%n");
+			difficulty = sc.nextInt();
+		}
 		
 		if (difficulty == 1)
 		{
@@ -90,7 +96,7 @@ public class Game
 			
 
 			// If card 1 already revealed
-			if (!card1.isHiden())
+			if (!card1.isHidden())
 			{
 				System.err.printf("%nCard 1 already found, choose another one%n");
 				continue;
@@ -98,7 +104,8 @@ public class Game
 
 			System.out.printf("%nOK%n%n");
 			gameBoard.flip(firstCardXPosi, firstCardYPosi);
-
+			System.out.println(gameBoard);
+			
 			// Choose second Card
 
 			int secondCardXPosi;
@@ -134,7 +141,7 @@ public class Game
 			}
 
 			// If card 2 already revealed, returns over the first card
-			if (!card2.isHiden())
+			if (!card2.isHidden())
 			{
 				System.err.printf("Card 2 already found, restart choosing your cards%n%n");
 				gameBoard.flip(firstCardXPosi, firstCardYPosi);

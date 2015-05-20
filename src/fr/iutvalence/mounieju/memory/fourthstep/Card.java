@@ -1,6 +1,5 @@
 package fr.iutvalence.mounieju.memory.fourthstep;
 
-/* TODO Use Generics rather than attribute for the design. */
 
 /**
  * Class to create a card.
@@ -39,7 +38,7 @@ public class Card
      * Get the private attribute of the card's face view.
      * @return boolean (true: card is hidden, false: card is revealed).
      */
-	public boolean isHiden() 
+	public boolean isHidden() 
     {
         return this.hidden;
     }

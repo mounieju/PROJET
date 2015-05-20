@@ -117,16 +117,41 @@ public class Board
     @Override
     public String toString() 
     {
-        /* TODO With StringBuilder. */
-        String asciiArtBoard = " --------\n";
+        StringBuilder asciiArtBoard = new StringBuilder();
+        
+        asciiArtBoard.append("  ");
+        
+        //Display numbers of column above the board
+        for(int col= 0 ; col < NB_TOT_COL ; col++)
+        {
+        	asciiArtBoard.append("  " +col+"  ");
+        }
+        
+        asciiArtBoard.append("\n");
+        asciiArtBoard.append("  ");
+        for(int col= 0 ; col < NB_TOT_COL ; col++)
+        {
+            asciiArtBoard.append("-----");
+        }
+        asciiArtBoard.append("\n");
+        
         for (int numberOfRows = 0; numberOfRows < NB_TOT_ROW; numberOfRows++) 
         {
+            asciiArtBoard.append(numberOfRows+" ");
             for (int numberOfColumns = 0; numberOfColumns < NB_TOT_COL; numberOfColumns++) 
             {
-                asciiArtBoard += this.board[numberOfRows][numberOfColumns];
+                asciiArtBoard.append(this.board[numberOfRows][numberOfColumns]);
             }
-            asciiArtBoard += "\n --------\n";
+                        
+            asciiArtBoard.append("\n");
+            asciiArtBoard.append("  ");
+            for(int col= 0 ; col < NB_TOT_COL ; col++)
+            {
+                asciiArtBoard.append("-----");
+            }
+            asciiArtBoard.append("\n");
+
         }
-        return asciiArtBoard;
+        return asciiArtBoard.toString();
     }
 }
