@@ -16,7 +16,25 @@ public enum CardDesign
     SUSHI("S"),
     
     /** Ramen card's design. */
-    RAMEN("R");
+    RAMEN("R"),
+    
+    /** Sushi card's design. */
+    NEM("N"),
+    
+    /** Ramen card's design. */
+    MAKI("M"),
+    
+    /** Sushi card's design. */
+    YAKITORI("Y"),
+    
+    /** Ramen card's design. */
+    DAIFUKU("D"),
+    
+    /** Sushi card's design. */
+    TEMPURA("T"),
+    
+    /** Ramen card's design. */
+    ONIGIRI("O");
     
     /** Constant linking a letter to a design for the display. */
     private final String display;

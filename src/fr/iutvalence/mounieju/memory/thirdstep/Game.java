@@ -12,12 +12,12 @@ public class Game
 	// //////////////////////////////////////////////////////
 
 	/** Constant: total number of pairs by default in the game. */
-	private static final int MAX_PAIR = 2;
+	private static int MAX_PAIR;
 
 	/** Define a game with board and scanner. */
 	private Board gameBoard;
 	private Scanner sc;
-	private Difficulty diff;
+	
 
 	/** Variable having the player's score. */
 	private int nb_pair;
@@ -28,8 +28,27 @@ public class Game
 	/** Create the new game */
 	public Game()
 	{
+		int difficulty;
+		
 		sc = new Scanner(System.in);
-		this.gameBoard = new Board();
+		System.out.println("Choice a level");
+		difficulty = sc.nextInt();
+		
+		if (difficulty == 1)
+		{
+			this.gameBoard = new Board();
+			MAX_PAIR = 2;
+		}
+		
+		if (difficulty == 2)
+		{
+			this.gameBoard = new Board(4,4);
+			MAX_PAIR = 8;
+		}
+
+		
+		
+		
 	}
 
 	// ////////////////// Methods
@@ -144,8 +163,7 @@ public class Game
 				continue;
 			}
 
-			// If cards are identical, reveal cards & increments the
-			// number of pairs
+			// If cards are identical, reveal cards & increments the number of pairs
 			nb_pair++;
 			System.out.println("Pair found, good job!");
 			// Display the board after the comparison
