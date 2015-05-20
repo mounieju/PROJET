@@ -3,8 +3,8 @@ package fr.iutvalence.mounieju.memory.fourthstep;
 /**
  * Enumeration of multiple designs a card can have.
  *
- * @author liottara
- * @version 1
+ * @author Alexandra LIOTTARD & Julie MOUNIER.
+ * @version 4
  */
 
 public enum CardDesign 
@@ -17,32 +17,32 @@ public enum CardDesign
     /** Ramen card's design. */
     RAMEN("R"),
     
-    /** Sushi card's design. */
+    /** Nem card's design. */
     NEM("N"),
     
-    /** Ramen card's design. */
+    /** Maki card's design. */
     MAKI("M"),
     
-    /** Sushi card's design. */
+    /** Yakitori card's design. */
     YAKITORI("Y"),
     
-    /** Ramen card's design. */
+    /** Daifuku card's design. */
     DAIFUKU("D"),
     
-    /** Sushi card's design. */
+    /** Tempura card's design. */
     TEMPURA("T"),
     
-    /** Ramen card's design. */
+    /** Onigiri card's design. */
     ONIGIRI("O");
     
-    /** Constant linking a letter to a design for the display. */
+    /** Displays design by a letter. */
     private final String display;
 
     
     ////////////////////Constructor //////////////////////////////////////////////////////
 
     /** 
-     * Constructor for the card's design. 
+     * Constructor of the card's design with parameters. 
      * @param disp: display of the card's design.
      */
     CardDesign(final String disp) 
@@ -51,6 +51,7 @@ public enum CardDesign
     }
     
 
+    
     //////////////////////////////////////////////////////////////////////////////////////
 
     @Override

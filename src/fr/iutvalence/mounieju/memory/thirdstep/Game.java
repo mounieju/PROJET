@@ -2,9 +2,12 @@ package fr.iutvalence.mounieju.memory.thirdstep;
 
 import java.util.Scanner;
 
-/** Build the game
+/** 
+ * Build the game
  * 
- * @author liottara */
+ * @author Alexandra LIOTTARD & Julie MOUNIER.
+ * @version 3
+ */
 
 public class Game
 {

@@ -1,16 +1,13 @@
 package fr.iutvalence.mounieju.memory.fourthstep;
-
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
-
-
 /**
- * Class to create the board of the game.
+ * Class for the board of the game.
  *
- * @author liottara
- * @version 1
+ * @author Alexandra LIOTTARD & Julie MOUNIER.
+ * @version 4
  */
 
 public class Board 
@@ -27,26 +24,24 @@ public class Board
     private final Card board[][];
     
 
-
+    //////////////////// Constructors ////////////////////////////////////////////////////// 
     
-////////////////////Constructors ////////////////////////////////////////////////////// 
-    
-    /** Constructor for the board. */
+    /** Constructor of the board. */
     public Board() 
     {
         this.board = new Card[NB_TOT_ROW][NB_TOT_COL];
         
-        /** Creating deck for the board */
+        /* Creating deck of paired cards associated with design */
         List<Card> deck = new LinkedList<Card>();
-        for (CardDesign design : CardDesign.values()) {
+        for (CardDesign design : CardDesign.values()) 
+        {
         	deck.add(new Card(design));
         	deck.add(new Card(design));
-        	if (deck.size() == NB_TOT_COL*NB_TOT_ROW) {
-        		break;
-        	}
+        	if (deck.size() == NB_TOT_COL*NB_TOT_ROW)
+        		break;	
         }
+        /* Shuffling deck, changing order of cards */
         Collections.shuffle(deck);
-
         
         /* Initialize board. */        
         for (int i = 0; i < NB_TOT_ROW; i++)
@@ -55,34 +50,33 @@ public class Board
     }
     
     
-    /** Constructor for the board with parameters. */
+    /** Constructor of the board with parameters. */
     public Board(int nbCol, int nbRow) 
     {
     	NB_TOT_COL = nbCol;
     	NB_TOT_ROW = nbRow;
     	this.board = new Card[NB_TOT_ROW][NB_TOT_COL];
         
-        /** Creating deck for the board */
+        /* Creating deck of paired cards associated with design */
         List<Card> deck = new LinkedList<Card>();
-        for (CardDesign design : CardDesign.values()) {
+        for (CardDesign design : CardDesign.values()) 
+        {
         	deck.add(new Card(design));
         	deck.add(new Card(design));
-        	if (deck.size() == NB_TOT_COL*NB_TOT_ROW) {
+        	if (deck.size() == NB_TOT_COL*NB_TOT_ROW)
         		break;
-        	}
         }
+        /* Shuffling deck, changing order of cards */
         Collections.shuffle(deck);
 
-        
         /* Initialize board. */        
         for (int i = 0; i < NB_TOT_ROW; i++)
         	for (int j =0; j < NB_TOT_COL; j++)
-        		this.board[i][j] = deck.remove(0);
-
-        
+        		this.board[i][j] = deck.remove(0);        
     }
+    
  
-//////////////////// Getter ////////////////////////////////////////////////////////
+    //////////////////// Getter ////////////////////////////////////////////////////////
     
 	/** 
 	* Get the card on the board.
@@ -95,12 +89,12 @@ public class Board
 	}
 	    
     
-	//////////////////// Methods ////////////////////////////////////////////////////////
+	//////////////////// Method ////////////////////////////////////////////////////////
          
     /** 
      * Method to flip selected card.
-     * @param x:abscissa   ;   y: ordinate.
-     * @return flipped Card (with face view changed).
+     * @param x: abscissa   ;   y: ordinate.
+     * @return flipped Card (with hidden view changed).
      */
 
     public Card flip(int x, int y)

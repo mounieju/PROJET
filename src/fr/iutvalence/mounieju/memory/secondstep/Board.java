@@ -4,8 +4,8 @@ package fr.iutvalence.mounieju.memory.secondstep;
 /**
  * Class to create the board of the game.
  *
- * @author liottara
- * @version 1
+ * @author Alexandra LIOTTARD & Julie MOUNIER.
+ * @version 2
  */
 
 public class Board 

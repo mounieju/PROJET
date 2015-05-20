@@ -1,8 +1,10 @@
 package fr.iutvalence.mounieju.memory.thirdstep;
 
-/** Main of the Memory
- * @author liottara
- *
+/** 
+ * Main of the Memory
+ * 
+ * @author Alexandra LIOTTARD & Julie MOUNIER.
+ * @version 3
  */
 
 public class DisplayGame 

@@ -5,8 +5,8 @@ package fr.iutvalence.mounieju.memory.thirdstep;
 /**
  * Class to create a card.
  *
- * @author liottara
- * @version 1
+ * @author Alexandra LIOTTARD & Julie MOUNIER.
+ * @version 3
  */
 
 public class Card 

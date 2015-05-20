@@ -1,8 +1,10 @@
 package fr.iutvalence.mounieju.memory.fourthstep;
 
-/** Main of the Memory
- * @author liottara
- *
+/** 
+ * Main of the Memory.
+ * 
+ * @author Alexandra LIOTTARD & Julie MOUNIER.
+ * @version 4
  */
 
 public class DisplayGame 
@@ -13,10 +15,10 @@ public class DisplayGame
      */
     public static void main(String[] args) 
     {
-    	/** Creating new game */
+    	/* Creates new game. */
     	Game game = new Game();
     	
-    	/** Start the game   */
+    	/* Starts the game.  */
     	game.start();
     }
     

@@ -3,8 +3,8 @@ package fr.iutvalence.mounieju.memory.thirdstep;
 /**
  * Enumeration of multiple designs a card can have.
  *
- * @author liottara
- * @version 1
+ * @author Alexandra LIOTTARD & Julie MOUNIER.
+ * @version 3
  */
 
 public enum CardDesign 

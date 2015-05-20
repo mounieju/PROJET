@@ -1,11 +1,10 @@
 package fr.iutvalence.mounieju.memory.fourthstep;
 
-
 /**
- * Class to create a card.
+ * Class for a card.
  *
- * @author liottara
- * @version 1
+ * @author Alexandra LIOTTARD & Julie MOUNIER.
+ * @version 4
  */
 
 public class Card 
@@ -15,14 +14,14 @@ public class Card
     /** Card's design on the board. */
     private final CardDesign design;
     
-    /** Card's face view. */
+    /** Card's hidden view. */
     private boolean hidden;
          
     
-//////////////////// Constructor //////////////////////////////////////////////////////
+    //////////////////// Constructor //////////////////////////////////////////////////////
     
 	/** 
-	 * Constructor for the card according to the settings given by the user.
+	 * Constructor of the card with parameters.
      * @param designCard the card's design.
      */
     public Card(CardDesign designCard) 
@@ -32,10 +31,10 @@ public class Card
     }
 
     
- //////////////////// Getters ////////////////////////////////////////////////////////
+    //////////////////// Getter ////////////////////////////////////////////////////////
     
     /** 
-     * Get the private attribute of the card's face view.
+     * Get the private attribute of the card's hidden view.
      * @return boolean (true: card is hidden, false: card is revealed).
      */
 	public boolean isHidden() 
@@ -44,18 +43,19 @@ public class Card
     }
     
     
-    //////////////////// Methods ////////////////////////////////////////////////////////
+    //////////////////// Method ////////////////////////////////////////////////////////
         
 	/**
 	 * Method when flipping card, changes its view (hidden or revealed).
 	 */
-	public void flip() {
+	public void flip() 
+	{
 		this.hidden = !this.hidden;
 	}
 	
 	
-   /////////////////////////////////////////////////////////////////////////////////////////////////////////
-           
+	
+   /////////////////////////////////////////////////////////////////////////////////////////////////////////    
   
     @Override
 	public int hashCode()
@@ -82,7 +82,8 @@ public class Card
 
 	
 	@Override
-    public String toString() {
+    public String toString() 
+	{
     	return String.format("| %s |", hidden ? "#" : design);
     }
     
