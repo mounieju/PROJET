@@ -3,6 +3,9 @@ import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
 
+import fr.iutvalence.mounieju.memory.IHM_firststep.Card;
+import fr.iutvalence.mounieju.memory.IHM_firststep.CardDesign;
+
 /**
  * Class for the board of the game.
  *

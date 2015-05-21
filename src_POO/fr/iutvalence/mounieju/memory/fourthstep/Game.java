@@ -1,6 +1,9 @@
 package fr.iutvalence.mounieju.memory.fourthstep;
 import java.util.Scanner;
 
+import fr.iutvalence.mounieju.memory.IHM_firststep.Board;
+import fr.iutvalence.mounieju.memory.IHM_firststep.Card;
+
 /** 
  * Class for the game.
  * 

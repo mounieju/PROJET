@@ -1,5 +1,7 @@
 package fr.iutvalence.mounieju.memory.fourthstep;
 
+import fr.iutvalence.mounieju.memory.IHM_firststep.Game;
+
 /** 
  * Main of the Memory.
  * 

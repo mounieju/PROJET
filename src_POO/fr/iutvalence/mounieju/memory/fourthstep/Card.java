@@ -1,5 +1,6 @@
 package fr.iutvalence.mounieju.memory.fourthstep;
 
+
 /**
  * Class for a card.
  *
