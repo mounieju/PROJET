@@ -7,7 +7,7 @@ import javax.swing.SwingUtilities;
  * Main of the Memory.
  * 
  * @author Alexandra LIOTTARD & Julie MOUNIER.
- * @version 4
+ * @version 1 (IHM)
  */
 
 public class DisplayGame 
@@ -18,9 +18,11 @@ public class DisplayGame
      */
     public static void main(String[] args) 
     {
-		SwingUtilities.invokeLater(new DisplayTask());
+    	SwingUtilities.invokeLater(new DisplayTask());
     	/* Creates new game. */
     	Game game = new Game();
+		
+		
     	
     	/* Starts the game.  */
     	game.start();

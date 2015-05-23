@@ -7,28 +7,45 @@ import javax.swing.JFrame;
 import javax.swing.WindowConstants;
 
 /**
- * Task dealing with IHM 
+ * Class dealing with the task of IHM 
  * 
  *@author Alexandra LIOTTARD & Julie MOUNIER
- *@version 1
+ *@version 1 (IHM)
  */
 
 public class DisplayTask implements Runnable, ActionListener
 {
-	/**La fenêtre	 */
+	////////////////// Attributes //////////////////////////////////////////////////////
+
+	/** Game's window */
 	private JFrame window;
+	private Game game;
+	private ChoosingDifficultyPanel chooseDiffPanel;
 	
+	
+    //////////////////// Constructor //////////////////////////////////////////////////////
+
+//	/**
+//	 * @param window
+//	 * @param chooseDiffPanel
+//	 */
+//	public DisplayTask(Game game) 
+//	{
+//		this.game = game;
+//	}
+//	
+
+	////////////////// Method ////////////////////////////////////////////////////////
 
 	/**
-	 * Methode interne permettant d'initialiser l'IHM
+	 * Internal method for initializing the HMI.
 	 */
 	private void initiateGUI()
 	{
 		// Creates window frame
 		this.window = new JFrame();
 
-		// Modification window's properties
-		// Title, dimensions (in pixels)
+		// Modifying window's properties
 		this.window.setTitle("The Memory Game");
 		this.window.setSize(500, 500);
 		this.window.setDefaultCloseOperation(WindowConstants.DISPOSE_ON_CLOSE);
@@ -38,7 +55,9 @@ public class DisplayTask implements Runnable, ActionListener
 		
 		// Displays window
 		this.window.setVisible(true);
-
+		
+		// Creates the pannel for choosing difficulty
+		this.chooseDiffPanel = new ChoosingDifficultyPanel(this);
 
 	}
 	
@@ -49,12 +68,19 @@ public class DisplayTask implements Runnable, ActionListener
 	}
 
 	@Override
-	public void actionPerformed(ActionEvent e) {
+	public void actionPerformed(ActionEvent e) 
+	{
 		// TODO Auto-generated method stub
 		
 	}
-
-	
-	
+//
+//	@Override
+//	public void notifierChangementDeRepresentationDuNombre(RepresentationDeNombre representationDuNombre)
+//	{
+//		this.symboles = representationDuNombre.obtenirLesDigits();
+//		this.labelDeLaSuiteDeSymboles.setText(this.symboles);
+//		this.chooseDiffPanel.forceDifficultyOfGame(gameDiff.getDifficulty());forcerLaSelectionDeLaBase(representationDuNombre.obtenirLaBase());
+//	}
+//	
 }
 
