@@ -1,11 +1,13 @@
 package fr.iutvalence.mounieju.memory.IHM_firststep;
 
 
+
+
 /** 
  * Class for the game.
  * 
  * @author Alexandra LIOTTARD & Julie MOUNIER.
- * @version 1 (IHM)
+ * @version 4
  */
 
 public class Game
@@ -60,6 +62,8 @@ public class Game
 	{
 		/* Define victory state. */
 		boolean victory = false;
+				
+		
 		/* Displays board */
 		GameOutputs.getOut(this.gameBoard.toString()); 
 

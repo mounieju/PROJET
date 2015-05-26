@@ -5,7 +5,7 @@ package fr.iutvalence.mounieju.memory.IHM_firststep;
  * Class for a card.
  *
  * @author Alexandra LIOTTARD & Julie MOUNIER.
- * @version 1 (IHM)
+ * @version 4
  */
 
 public class Card 

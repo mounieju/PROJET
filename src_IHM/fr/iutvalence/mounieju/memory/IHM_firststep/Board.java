@@ -7,7 +7,7 @@ import java.util.List;
  * Class for the board of the game.
  *
  * @author Alexandra LIOTTARD & Julie MOUNIER.
- * @version 1 (IHM)
+ * @version 4
  */
 
 public class Board 
@@ -80,7 +80,7 @@ public class Board
     
 	/** 
 	* Get the card on the board.
-	* @param x: ordinate ;  y: abscissa.
+	* @param x: abscissa ;  y: ordinate.
 	* @return card : the card's design.
 	*/
 	public Card get(int x, int y) 
@@ -93,7 +93,7 @@ public class Board
          
     /** 
      * Method to flip selected card.
-     * @param x: ordinate ;  y: abscissa.
+     * @param x: abscissa   ;   y: ordinate.
      * @return flipped Card (with hidden view changed).
      */
 

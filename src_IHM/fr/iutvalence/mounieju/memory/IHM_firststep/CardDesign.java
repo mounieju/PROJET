@@ -4,7 +4,7 @@ package fr.iutvalence.mounieju.memory.IHM_firststep;
  * Enumeration of multiple designs a card can have.
  *
  * @author Alexandra LIOTTARD & Julie MOUNIER.
- * @version 1 (IHM)
+ * @version 4
  */
 
 public enum CardDesign 
@@ -39,7 +39,7 @@ public enum CardDesign
     private final String display;
 
     
-    //////////////////// Constructor //////////////////////////////////////////////////////
+    ////////////////////Constructor //////////////////////////////////////////////////////
 
     /** 
      * Constructor of the card's design with parameters. 

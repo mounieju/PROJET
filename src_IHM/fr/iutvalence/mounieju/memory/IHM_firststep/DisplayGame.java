@@ -1,13 +1,10 @@
 package fr.iutvalence.mounieju.memory.IHM_firststep;
 
-import javax.swing.SwingUtilities;
-
-
 /** 
  * Main of the Memory.
  * 
  * @author Alexandra LIOTTARD & Julie MOUNIER.
- * @version 1 (IHM)
+ * @version 4
  */
 
 public class DisplayGame 
@@ -18,14 +15,15 @@ public class DisplayGame
      */
     public static void main(String[] args) 
     {
-    	SwingUtilities.invokeLater(new DisplayTask());
+    	Controller controller = new Controller();
+    	new Thread(controller).start();
+    	//Memory memory = new Memory();
+    	
     	/* Creates new game. */
-    	Game game = new Game();
-		
-		
+    	//Game game = new Game();
     	
     	/* Starts the game.  */
-    	game.start();
+    	//game.start();
     }
     
 }
