@@ -50,13 +50,17 @@ public enum CardDesign
         display = disp;
     }
     
-
-    
     //////////////////////////////////////////////////////////////////////////////////////
 
-    @Override
+
+	@Override
     public String toString() 
     {
     	return display;
     }
+
+	public String getDisplay()
+	{
+		return display;
+	}
 }

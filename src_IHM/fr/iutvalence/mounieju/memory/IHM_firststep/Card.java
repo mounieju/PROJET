@@ -87,5 +87,11 @@ public class Card
 	{
     	return String.format("| %s |", hidden ? "#" : design);
     }
+
+
+	public CardDesign getDesign()
+	{
+		return design;
+	}
     
 }

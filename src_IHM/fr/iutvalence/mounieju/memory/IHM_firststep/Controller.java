@@ -1,5 +1,6 @@
 package fr.iutvalence.mounieju.memory.IHM_firststep;
 
+
 public class Controller implements Runnable
 {
 	/** Controller's access game's view. */
@@ -8,6 +9,11 @@ public class Controller implements Runnable
 	private Board board;
 
 	
+	public Board getBoard()
+	{
+		return board;
+	}
+
 	/**
 	 * Method to control the chosen difficulty.
 	 * @param diff: chosen difficulty.
@@ -31,11 +37,10 @@ public class Controller implements Runnable
 		memory = new Memory(this);
 	}
 
-	public void flip(int i, int j)
+	public void flip(int i, int j, CardButton cardButton)
 	{
 		// Partie traitement.
 		board.flip(i, j);
-		// TODO finish 
-		
+		cardButton.cardButtonFlip(this.getBoard().get(i, j).getDesign().getDisplay());
 	}
 }

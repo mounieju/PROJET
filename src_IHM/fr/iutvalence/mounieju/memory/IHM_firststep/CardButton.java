@@ -3,7 +3,9 @@ package fr.iutvalence.mounieju.memory.IHM_firststep;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.SwingConstants;
 
 /**
  * Class for card buttons 
@@ -20,6 +22,8 @@ public class CardButton extends JButton implements ActionListener
 	private int j;
     /** Card's button's controller. */
 	private Controller controller;
+	
+	private CardDesign cardDesign;
 
 	
     ////////////////////Constructor //////////////////////////////////////////////////////
@@ -30,7 +34,8 @@ public class CardButton extends JButton implements ActionListener
 	 * @param j: card's button's abscissa. 
 	 * @param controller: the controller which controls this class.
 	 */
-	public CardButton(int i, int j, Controller controller) {
+	public CardButton(int i, int j, Controller controller)
+	{
 		super();
 		this.i = i;
 		this.j = j;
@@ -38,12 +43,19 @@ public class CardButton extends JButton implements ActionListener
 		addActionListener(this);
 	}
 
+
+	public void cardButtonFlip(String design)
+	{
+		this.setText(design);
+	}
 	
 	
 	@Override
 	public void actionPerformed(ActionEvent arg0)
 	{
 		System.out.println(String.format("(%d,%d)", i, j));
-		controller.flip(i,j);
+		controller.flip(i,j, this);
+
 	}
+
 }
