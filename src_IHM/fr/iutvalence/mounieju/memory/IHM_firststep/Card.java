@@ -5,7 +5,7 @@ package fr.iutvalence.mounieju.memory.IHM_firststep;
  * Class for a card.
  *
  * @author Alexandra LIOTTARD & Julie MOUNIER.
- * @version 4
+ * @version 2
  */
 
 public class Card 
@@ -17,6 +17,8 @@ public class Card
     
     /** Card's hidden view. */
     private boolean hidden;
+    
+    private Position posi;
          
     
     //////////////////// Constructor //////////////////////////////////////////////////////
@@ -25,14 +27,20 @@ public class Card
 	 * Constructor of the card with parameters.
      * @param designCard the card's design.
      */
-    public Card(CardDesign designCard) 
+    public Card(CardDesign designCard, Position posi) 
     {
         this.design = designCard;
         this.hidden = true;
+        this.posi = posi;
     }
+    
+    public Card(CardDesign designCard) 
+    {
+        this.design = designCard;
+        this.hidden = true;    }
 
     
-    //////////////////// Getter ////////////////////////////////////////////////////////
+    //////////////////// Getters & setters ////////////////////////////////////////////////////////
     
     /** 
      * Get the private attribute of the card's hidden view.
@@ -42,6 +50,33 @@ public class Card
     {
         return this.hidden;
     }
+	
+	/** 
+     * Get the private attribute of the card's design.
+     * @return design: current card's design.
+     */
+	public CardDesign getDesign()
+	{
+		return design;
+	}
+	
+    /** 
+     * Get the private attribute of the card's position.
+     * @return position: current card's position.
+     */
+	public Position getPosition() 
+    {
+        return this.posi;
+    }
+	
+	/** 
+     * Set the private attribute of the card's position.
+     * @param posi: position of the card to change..
+     */
+	public void setPosi(Position posi)
+	{
+		this.posi = posi;
+	}
     
     
     //////////////////// Method ////////////////////////////////////////////////////////
@@ -53,7 +88,6 @@ public class Card
 	{
 		this.hidden = !this.hidden;
 	}
-	
 	
 	
    /////////////////////////////////////////////////////////////////////////////////////////////////////////    
@@ -89,9 +123,6 @@ public class Card
     }
 
 
-	public CardDesign getDesign()
-	{
-		return design;
-	}
+
     
 }

@@ -4,7 +4,7 @@ package fr.iutvalence.mounieju.memory.IHM_firststep;
  * Enumeration of multiple designs a card can have.
  *
  * @author Alexandra LIOTTARD & Julie MOUNIER.
- * @version 4
+ * @version 2
  */
 
 public enum CardDesign 
@@ -50,6 +50,18 @@ public enum CardDesign
         display = disp;
     }
     
+    
+    //////////////////// Getters & setters ////////////////////////////////////////////////////////
+
+    /**
+     * Get display of the card's design.
+     * @return display: the display of the current card's design.
+     */
+    public String getDisplay()
+	{
+		return display;
+	}
+    
     //////////////////////////////////////////////////////////////////////////////////////
 
 
@@ -59,8 +71,5 @@ public enum CardDesign
     	return display;
     }
 
-	public String getDisplay()
-	{
-		return display;
-	}
+	
 }

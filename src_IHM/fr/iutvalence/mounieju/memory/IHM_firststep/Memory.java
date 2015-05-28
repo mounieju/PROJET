@@ -52,6 +52,9 @@ public class Memory extends JFrame implements ActionListener
 		setVisible(true);
 }
 		
+	
+    //////////////////// Methods ////////////////////////////////////////////////////////
+
 	/**
 	 * Private method to create the game's window's menu. 
 	 */
@@ -62,7 +65,8 @@ public class Memory extends JFrame implements ActionListener
 
 		// Creates rubric menu "MENU"
 		JMenu menu = new JMenu("Menu");
-		// Creates rubric menu "RULES"
+		
+		// Creates menu item "RULES"
 			JMenuItem menuItemRules = new JMenuItem("Rules");
 			menuItemRules.addActionListener(new ActionListener() {
 				@Override
@@ -137,13 +141,13 @@ public class Memory extends JFrame implements ActionListener
 	    gamePnl.setLayout(new GridLayout(line, column, 5, 5));
 	    for (int i = 0; i < line; i++) {
 	    	for (int j = 0; j < column; j++) {
-	    		gamePnl.add(new CardButton(i,j,controller));
+	    		Position posi = new Position(i, j);
+	    		gamePnl.add(new CardButton(posi,controller));
 	    	}
 	    }
 	    this.validate();
 	}
 	  
-	
 	
 	
 	

@@ -3,28 +3,23 @@ package fr.iutvalence.mounieju.memory.IHM_firststep;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.SwingConstants;
 
 /**
  * Class for card buttons 
  * 
  * @author Alexandra LIOTTARD & Julie MOUNIER.
- * @version 4
+ * @version 2
  */
 public class CardButton extends JButton implements ActionListener
 {
 	////////////////// Attributes //////////////////////////////////////////////////////
 
     /** Card's button's ordinate & abscissa. */
-	private int i;
-	private int j;
+	private Position posi;
     /** Card's button's controller. */
 	private Controller controller;
 	
-	private CardDesign cardDesign;
-
 	
     ////////////////////Constructor //////////////////////////////////////////////////////
 
@@ -34,28 +29,46 @@ public class CardButton extends JButton implements ActionListener
 	 * @param j: card's button's abscissa. 
 	 * @param controller: the controller which controls this class.
 	 */
-	public CardButton(int i, int j, Controller controller)
+	public CardButton(Position posi, Controller controller)
 	{
 		super();
-		this.i = i;
-		this.j = j;
+		this.posi = posi;
 		this.controller = controller;
 		addActionListener(this);
 	}
 
+    //////////////////// Getters & setters ////////////////////////////////////////////////////////
+    
+    /** 
+     * Get the private attribute of the card's button's position.
+     * @return posi: current card's button's position.
+     */
+	public Position getPosi()
+	{
+		return posi;
+	}
 
+	
+    //////////////////// Method ////////////////////////////////////////////////////////
+
+	
+	/**
+	 * Method to display design on the game.
+	 * @param design: card's design. 
+	 */
 	public void cardButtonFlip(String design)
 	{
 		this.setText(design);
 	}
 	
 	
+	
+	
 	@Override
 	public void actionPerformed(ActionEvent arg0)
 	{
-		System.out.println(String.format("(%d,%d)", i, j));
-		controller.flip(i,j, this);
-
+		controller.flip(posi, this);
+		controller.posLastButton(this.posi,this);
 	}
 
 }

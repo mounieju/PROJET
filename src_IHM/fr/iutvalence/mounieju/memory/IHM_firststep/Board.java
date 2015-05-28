@@ -7,7 +7,7 @@ import java.util.List;
  * Class for the board of the game.
  *
  * @author Alexandra LIOTTARD & Julie MOUNIER.
- * @version 4
+ * @version 2
  */
 
 public class Board 
@@ -47,6 +47,8 @@ public class Board
         for (int i = 0; i < NB_TOT_ROW; i++)
         	for (int j =0; j < NB_TOT_COL; j++)
         		this.board[i][j] = deck.remove(0);
+        
+        
     }
     
     
@@ -83,9 +85,9 @@ public class Board
 	* @param x: abscissa ;  y: ordinate.
 	* @return card : the card's design.
 	*/
-	public Card get(int x, int y) 
+	public Card get(Position posi) 
 	{
-		return this.board[x][y];
+		return this.board[posi.cardXPosi][posi.cardYPosi];
 	}
 	    
     
@@ -97,10 +99,11 @@ public class Board
      * @return flipped Card (with hidden view changed).
      */
 
-    public Card flip(int x, int y)
+    public Card flip(Position posi)
     {
-    	this.board[x][y].flip();
-    	return this.board[x][y];
+    	this.board[posi.cardXPosi][posi.cardYPosi].flip();
+    	return this.board[posi.cardXPosi][posi.cardYPosi];
+			
     }
     
     

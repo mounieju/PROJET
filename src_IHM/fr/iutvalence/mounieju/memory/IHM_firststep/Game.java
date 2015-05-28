@@ -1,13 +1,11 @@
 package fr.iutvalence.mounieju.memory.IHM_firststep;
 
 
-
-
 /** 
  * Class for the game.
  * 
  * @author Alexandra LIOTTARD & Julie MOUNIER.
- * @version 4
+ * @version 2
  */
 
 public class Game
@@ -19,162 +17,208 @@ public class Game
 
 	/** Define a game with board and game entries / outputs. */
 	private Board gameBoard;
-	private GameInputs gameInputs;
-	private GameOutputs gameOutputs;
+
+	/**Define a game with a controller. */
+	private Controller controller;
 	
 	/** Define counter of moves by player. */
 	private int numberStrokes;
 	/** Define number of pairs found by player. */
 	private int nb_pair;
+	/** Define attributes to remember the two selected cards to compare after */ 
+	private Position posi1;
+	private Card card1;
+	private Position posi2;
+	private Card card2;
+	private CardButton button1;
+
 
 	
 	////////////////// Constructor //////////////////////////////////////////////////////
 
 	/** Create the new game */
-	public Game()
+	public Game(int diff, Controller controller)
 	{
-		/* Define 2 levels of difficulty. */  
-		/* Asks for difficulty. */
-		this.gameInputs = new GameInputs();
-		
+		/* Define 2 levels of difficulty. */		
 		/* Creates little board on 'Easy' mode. */
-		if (this.gameInputs.getDifficulty() == 1)
+		if (diff == 1)
 		{
 			this.gameBoard = new Board();
 			MAX_PAIR = 2;
-			this.gameOutputs= new GameOutputs(this.gameBoard.toString()); 
 		}
 		
 		/* Creates bigger board on 'Hard' mode. */
-		if (this.gameInputs.getDifficulty() == 2)
+		if (diff == 2)
 		{
 			this.gameBoard = new Board(4,4);
 			MAX_PAIR = 8;
-			this.gameOutputs= new GameOutputs(this.gameBoard.toString());
-		}		
+		}
+		
+		this.controller = controller;
 	}
 	
+	
+    //////////////////// Getters & setters ////////////////////////////////////////////////////////
 
-	////////////////// Method ////////////////////////////////////////////////////////
+	/**
+	 * Get the game board.
+	 * @return gameBoard: the actual game board.
+	 */
+	public Board getGameBoard()
+	{
+		return gameBoard;
+	}
 
-	/** Method to start the game */
-	public void start()
+	
+	////////////////// Methods ////////////////////////////////////////////////////////
+	
+	/**
+	 * Method to store two selected cards to compare after. 
+	 * @param posi: position of the card.
+	 * @param button: the clicked button.
+	 */
+	public void cardReturn(Position posi, CardButton button){
+		// Storing the first card.
+		if(this.posi1==null){
+			this.posi1 = posi;		
+			this.card1 = this.gameBoard.get(posi);
+			this.button1 = button;
+		}
+		// Storing the second card.
+		else {
+			this.posi2 = posi;		
+			this.card2 = this.gameBoard.get(posi);
+			// Comparing the two cards.
+			// If same, disables button cards and locks visibility.
+			if(card1.equals(card2)){
+				this.nb_pair ++;
+				this.numberStrokes ++;
+				this.button1.setEnabled(false);
+				button.setEnabled(false);
+				//Checks if game finished.
+				if(this.checkWin()){
+					System.out.println("FIN DE PARTI");
+					System.out.printf("Number of strokes: %d", numberStrokes);
+
+					System.exit(0);
+				}
+				// Else enables them and hides them.
+			}else {
+				this.button1.setText("");
+				button.setText("");
+				
+				this.button1.setEnabled(true);
+				this.button1 = null;
+				button.setEnabled(true);
+				this.numberStrokes ++;
+
+			}
+			// "Cleans" the memory of the two previously selected cards to have room for others. 
+			this.posi1=null;
+		}
+
+	}
+	
+	
+	/**
+	 * Method to check if game over.
+	 * @return boolean (true : game over,  false: not).
+	 */
+	public boolean checkWin(){
+		return (this.nb_pair == MAX_PAIR);
+	}
+	
+	
+	/** Method to start the game 
+	 * @throws InterruptedException */
+	public void start() throws InterruptedException
 	{
 		/* Define victory state. */
 		boolean victory = false;
-				
-		
-		/* Displays board */
-		GameOutputs.getOut(this.gameBoard.toString()); 
 
 		while (!victory)
 		{
 			/* Choose first card. */
 			boolean input1;
-			int firstCardXPosi;
-			int firstCardYPosi;
-			Card card1 = null;
+			Card card1 = null;			
 			
 			do
 			{
 				input1 = true;
 				/* Asks for first card. */
-				firstCardXPosi = this.gameInputs.askXPosi();
-				firstCardYPosi = this.gameInputs.askYPosi();
-				
-				/* Deals with input errors. */
-				try
-				{
-					card1 = gameBoard.get(firstCardXPosi, firstCardYPosi);  
-				} 
-				catch (ArrayIndexOutOfBoundsException e)
-				{
-					input1 = false;
-					this.gameOutputs.doesCardExist(input1);
+				while(this.controller.getPosLastButton()==null){
+					Thread.sleep(1000);
 				}
+				System.out.println("ok");
+				Position posi1 = this.controller.getPosLastButton();
+				card1.setPosi(posi1);
+				
 			} while (!input1);
-			 
-		
+				
 			/* Case 1: card 1 already revealed. */
-			if (this.gameOutputs.isCardForeFound(card1))
-			{
-				continue;
-			}
-			
-			/* Case 2: card 1 OK to flip. */
-			gameBoard.flip(firstCardXPosi, firstCardYPosi);
-			GameOutputs.getOut(gameBoard.toString());
-			
+			// Buttons disabled so no risks
 			
 			/* Choose second card. */
 
 			boolean input2;
-			int secondCardXPosi;
-			int secondCardYPosi;
 			Card card2 = null;				
 			
 			do
 			{
 				input2 = true;
 				/* Asks for first card. */
-				secondCardXPosi = this.gameInputs.askXPosi();
-				secondCardYPosi = this.gameInputs.askYPosi();
+				while(this.controller.getPosLastButton()==null){
+
+					Thread.sleep(100);
+
+					System.out.println("non");
+				}
+				System.out.println("ok");
+				Position posi2 = this.controller.getPosLastButton();
+				card2.setPosi(posi2);
 				
 				/* Deals with input errors. */
 				try
 				{
-					card2 = gameBoard.get(secondCardXPosi, secondCardYPosi);  
+					card2 = gameBoard.get(posi2);  
 				} 
 				catch (ArrayIndexOutOfBoundsException e)
 				{
 					input2 = false;
-					this.gameOutputs.doesCardExist(input2);
+				//	this.gameOutputs.doesCardExist(input2);
 				}
 			} while (!input2);
 			
 			
 			/* Case 1: card 2 same as card 1, returns over card 1. */
-			if (this.gameOutputs.isSameCard(firstCardXPosi, firstCardYPosi, secondCardXPosi, secondCardYPosi))
-			{
-				gameBoard.flip(firstCardXPosi, firstCardYPosi);
-				continue;
-			}
+			// Card disabled after clicking so no risks.
 
 			/* Case 2: card 2 already revealed, returns over card 1. */ 
-			if (this.gameOutputs.isCardForeFound(card2))
-			{
-				gameBoard.flip(firstCardXPosi, firstCardYPosi);
-				continue;
-			}
+			// Buttons disabled so no risks
+
 
 			/* Case 3: card 2 OK to flip. */
-			gameBoard.flip(secondCardXPosi, secondCardYPosi);
-			GameOutputs.getOut(gameBoard.toString());
+			gameBoard.flip(card2.getPosition());
 			
 
 			/* Compare card 1 & card 2. */
 
 			/* Case 1: card 1 different from card 2, increments number of strokes played. */
-			if (!this.gameOutputs.areAPair(card1, card2))
+			if (!this.controller.areAPair(card1, card2))
 			{
-				gameBoard.flip(firstCardXPosi, firstCardYPosi);
-				gameBoard.flip(secondCardXPosi, secondCardYPosi);
+				gameBoard.flip(card1.getPosition());
+				gameBoard.flip(card2.getPosition());
 				numberStrokes ++;
-
-				/* Displays board after comparison. */
-				GameOutputs.getOut(gameBoard.toString());
 				continue;
 			}
 
 			/* Case 2: card 1 identical to card 2, revealed, increments number of pairs found & of strokes played. */
 			nb_pair++;
 			numberStrokes++;
-			/* Displays board after comparison. */
-			GameOutputs.getOut(gameBoard.toString());
 			
 
 			/* Case all pairs found: end of game. */
-			if (this.gameOutputs.isGameOver(nb_pair, MAX_PAIR, numberStrokes))
+			if (this.checkWin())
 			{
 				victory = true;
 
@@ -183,5 +227,6 @@ public class Game
 		}
 
 	}
+
 
 }
